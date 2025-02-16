@@ -62,7 +62,7 @@ export default function TaskDetailDialog({
             className={`text-xs px-2 py-0.5 rounded-full ${getPriorityClass(
               tender.priority
             )}`}>
-            {tender.priority.charAt(0).toUpperCase() + tender.priority.slice(1)}{" "}
+            {tender.priority.charAt(0).toUpperCase() + tender.priority.slice(1)}
             Priority
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function TaskDetailDialog({
           <p className="text-sm">{tender.description}</p>
         </div>
 
-        <div className="flex justify-between mb-6">
+        <div className="flex justify-between">
           <div>
             <h4 className="text-sm text-gray-400 mb-1">Assignee</h4>
             <div className="flex items-center gap-2">
@@ -102,7 +102,7 @@ export default function TaskDetailDialog({
             Comments ({tender.commentsList?.length || 0})
           </h3>
 
-          <div className="space-y-4 max-h-[300px] overflow-y-auto mb-4">
+          <div className="space-y-4 max-h-[150px] overflow-y-auto mb-4">
             {tender.commentsList?.map((comment) => (
               <div key={comment.id} className="flex gap-3">
                 <Avatar className="h-8 w-8">
