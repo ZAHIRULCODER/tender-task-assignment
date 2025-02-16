@@ -30,9 +30,7 @@ export default function TenderColumn({
   const tenderIds = tenders.map((tender) => tender.id);
 
   return (
-    <div
-      ref={setNodeRef}
-      className="flex flex-col h-full p-4 bg-black rounded-lg shadow min-h-[150px]">
+    <div className="flex flex-col h-full p-4 bg-black rounded-lg shadow min-h-[150px]">
       <div className="flex items-center gap-2 mb-4">
         <div
           className={`w-3 h-3 rounded-full ${getColumnColorClass(
@@ -42,7 +40,7 @@ export default function TenderColumn({
         <div className="bg-[#333] text-white text-xs px-2 py-0.5 rounded-full ml-1">
           {count}
         </div>
-        <div className="flex-grow"></div>
+        <div className="flex-grow" />
         <button className="text-white p-1 hover:bg-[#333] rounded-full">
           <PlusIcon size={16} />
         </button>
@@ -52,22 +50,24 @@ export default function TenderColumn({
       </div>
 
       <SortableContext items={tenderIds} strategy={verticalListSortingStrategy}>
-        <div className="space-y-4 flex-1 min-h-[100px]">
-          {tenders.length === 0 ? (
-            <div className="h-full min-h-[100px] flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-700 rounded-lg m-2">
-              Drop here
-            </div>
-          ) : (
-            tenders.map((tender) => (
+        {tenders.length === 0 ? (
+          <div
+            ref={setNodeRef}
+            className="min-h-[100px] flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-700 rounded-lg">
+            Drop here
+          </div>
+        ) : (
+          <div ref={setNodeRef} className="space-y-4 flex-1 min-h-[100px]">
+            {tenders.map((tender) => (
               <TenderCard
                 key={tender.id}
                 tender={tender}
                 onUpdateTender={onUpdateTender}
                 columnId={id}
               />
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </SortableContext>
     </div>
   );
